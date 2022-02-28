@@ -15,3 +15,16 @@ public class Admiral{
 		System.out.println("lähim laev: "+lk1.lahim(sx, sy));
 	}
 }
+
+/*[chrhin@greeny Kodutoo3]$ java Admiral 8 8
+
+Allveelaev koordinaatidel 8.0 8.0
+
+SNMG1
+kutsung: UL12EN (5.0, 2.0) / klass: hävitaja / kurss: 180 kraadi / kiirus: 9.0 kn
+kutsung: WK31EN (3.0, 6.0) / klass: fregatt / kurss: 180 kraadi / kiirus: 9.0 kn
+kutsung: LO28EN (1.0, 2.0) / klass: hävitaja / kurss: 180 kraadi / kiirus: 9.0 kn
+
+lähim laev: kutsung: WK31EN (3.0, 6.0) / klass: fregatt / kurss: 180 kraadi / kiirus: 9.0 kn
+[chrhin@greeny Kodutoo3]$
+*/
