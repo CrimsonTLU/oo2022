@@ -1,3 +1,5 @@
+package kodutoo;
+
 public class battleshipTuum1 implements battleshipTuum{
     int laevX, laevY, shipHealth; // Lisatud laeva elude muutuja
     int pommitusX, pommitusY;
