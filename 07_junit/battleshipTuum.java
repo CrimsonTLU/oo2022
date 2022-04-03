@@ -1,3 +1,5 @@
+package kodutoo;
+
 public interface battleshipTuum{
     public void asetaLaev();
     public int[] pommita();
