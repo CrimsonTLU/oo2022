@@ -4,7 +4,7 @@ public class Proov1{
     public static int koguElud(ArrayList<Laev> m){
             int koguElud = 0;
             for (Laev l: m){koguElud+=l.tagastaElud();}
-		    return koguElud;
+	    return koguElud;
         }
 
     public static void main(String[] arg){
