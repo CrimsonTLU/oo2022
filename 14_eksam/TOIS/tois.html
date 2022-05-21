@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="formToTxt.js" defer></script>
+</head>
+<body>
+    <nav class="navbar" id="nav">
+        <a href="http://www.tlu.ee/~krisplv/TOIStest/" class="logo"></a>
+        <a href="http://www.tlu.ee/~krisplv/TOIStest/oppekavad.html" class="links" id="allForms">Kõik õppekavad /</a>
+        
+        <a href="http://www.tlu.ee/~krisplv/TOIStest/uus.html" class="links" id="newForm">Loo uus õppekava /</a>
+        
+        <a href="http://www.tlu.ee/~krisplv/TOIStest/logi.html" class="links" id="logIn">Logi sisse</a>
+    </nav>
+    <container class="oppekava" style="margin-top: 80px;">
+        <div class="headPiece">
+            <h1>Õppekava Muutmine</h1>
+            <p style="font-size: 32px;">Täitja:</p>
+            <input type="text"  style="width: 40%;font-size: 28px;" id="filler" value="Maali Maasikas" >
+            <br>
+            <p>Õppekava ID: <b>jölkadfh245389r2yfdöfw</b></p>
+        <br>
+        <hr>
+        </div>
+        <div class="box" id="b1">
+            <p><i>ÜLDINE INFO: </i></p>
+        </div>
+        <div class="fillForm">
+
+            <table class="form">
+                <tr>
+                    <th><label for="nimiEK">Õppekava nimetus e.k</label>
+                        <br>
+                        <input type="text" id="nimiEK" class="formInput" value="Termodünaamika">
+                    </th>
+                    <th><label for="nimiIK">Õppekava nimetus i.k</label>
+                        <br>
+                        <input type="text" id="nimiIK" class="formInput" value="Thermal dynamics">
+                    </th>
+                    <th><label for="nimiVK">Õppekava nimetus v.k</label>
+                        <br>
+                        <input type="text" id="nimiVK" class="formInput" value="Ei pea sisestama">
+                    </th>
+                </tr>
+                <tr>
+                    <th><label for="viisid"><b>Õppeviisid</b></label>
+                        <br>
+                        <input type="radio" id="r1"><label for="r1">E-õpe</label><br>
+                        <input type="radio" id="r2"><label for="r2">Praktika</label><br>
+                        <input type="radio" id="r3"><label for="r3">Iseseisev õpe</label>
+                    </th>
+                    <th>
+                        <label for="lisa">Muud lisad:</label>
+                        <br>
+                        <input type="text" id="lisa" class="formInput" value="Lisasid pole">
+
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="EAP">Õppekava EAP hulk</label>
+                        <br>
+                        <input type="text" id="EAP" class="formInput" value="12">
+                        <br>
+                        <label for="vorm">Õppevorm</label>
+                        <br>
+                        <input type="text" id="vorm" class="formInput" value="Päevaõpe">
+                        <br>
+                        <label for="lang">Õppetöö keeled</label>
+                        <br>
+                        <input type="text" id="lang" class="formInput"value="EE, EN">
+                        <br>
+                        <label for="target">Sihtgrupp</label>
+                        <br>
+                        <input type="text" id="target" class="formInput" value="Bakalaureuse tudengid">
+                    </th>
+                </tr>
+            </table>
+            </div>
+        </div>
+        <div class="sendBtn">
+            <input type="button" value="Kinnita" id="sendAnswer" onclick="sendToMain()">
+        </div>
+        <div class="sendBtn">
+            <input type="button" value="Lae alla tekstina" id="downloadTxt">
+        </div>
+    </container>
+    <script defer>
+        function sendToMain(){
+            location.href = "http://www.tlu.ee/~krisplv/TOIStest/oppekavad.html";
+        }
+    </script>
+</body>
+</html>
