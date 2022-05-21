@@ -1,0 +1,134 @@
+Java kasutusvaldkonnad, käivitamise moodused
+
+Platvormist sõltumatu, objektorienteeritud, kompileeritav. 
+Kasutatakse mtimeplatvormilistes rakendustes, serverites ja veebirakendustes, mobiilseadmetes, mängudes
+Käivitamine: mõeldud jooksma mistahes süsteemi peal, kompileeritakse baitkoodi (masinkoodi asemel, tagamaks universaalsust). Baitkood käivitatakse virtuaalmasina poolt, tavaliselt Java Runtime Environment. Osa riistvara võimaldab ka otse käivitamist. Käivitamisel on oluline ka objekti mäluhaldus (automatic garbage collector)
+
+
+Java lihtandmetüübid
+
+Data Type 	Size 	Description
+byte 	1 byte 	Stores whole numbers from -128 to 127
+short 	2 bytes 	Stores whole numbers from -32,768 to 32,767
+int 	4 bytes 	Stores whole numbers from -2,147,483,648 to 2,147,483,647
+long 	8 bytes 	Stores whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+float 	4 bytes 	Stores fractional numbers. Sufficient for storing 6 to 7 decimal digits
+double 	8 bytes 	Stores fractional numbers. Sufficient for storing 15 decimal digits
+boolean 	1 bit 	Stores true or false values
+char 	2 bytes 	Stores a single character/letter or ASCII values
+
+põhiliselt kasutatakse int, double, String
+
+Arvude puhul on oluline, kui suuri arve plaanitakse hoiustada, ning millist täpsust nõutakse (double on täpsem kui float)
+char on üksikute tähtede hoiustamiseks, String char-ide kogumiks
+
+
+Java massiivide loomine ja kasutamine
+
+Array: massiiv, mis hoiab endas kindlat arvu elemente, peale loomist on pikkus fikseeritud.
+Loomine: andmetüüp[] massiiviNimi = new andmetüüp[elementide arv]
+
+andmetüüp võib olla nii lihtandmetüüp (String, int, double) kui ka omaloodud andmetüüp (tuleneb omaloodud klassist, kus konstrueeritakse teatud tüüpi element, näiteks joogipudel, millega saab luua joogipudelite massiivi)
+
+Kasutamine: kindla hulga elementide hoiustamiseks, et neid pärida või funktsioonides kasutada
+
+Elementide lisamine massiivi: massiiviNimi[elemendi kohanumber] = element
+Elementide küsimine: massiiviNimi[elemendi kohanumber]
+
+Massiiv saab olla ka mitmemõõtmeline: massiivi elementideks võivad olla omakorda massiivid
+int[][] koordinaadid = new int[3][2]
+
+Kui massiiv saab täis, tuleb kopeerida uude suuremasse massiivi 
+System.Array.Copy
+
+
+Java Listi loomine ja kasutamine. ArrayListi ja LinkedListi erinevus
+
+List on järjestatud andmekogum, List interface mis extends Collection interface
+Loomine: ArrayList<andmetüüp> listiNimi = new ArrayList<andmetüüp>();
+Andmetüüp võib olla lihtandmetüüp või omaloodud muutuja tüüpi, tulenedes omaloodud klassi konstruktorist
+
+ArrayList: kasutab dünaamilist massiivi (omab kindlat mäluhulka, käivitamisel järjestatakse elemendid. Uue elemendi lisamisel kopeeritakse olemasolev massiiv uude, suuremasse massiivi. Elementide eemaldamisel paigutatakse kõik elemendid mälus ümber. Seetõttu aeglane, aga on parem hoidmaks andmeid, mis tihti ei muutu, vaid on peamiselt lugemiseks)
+
+LinkedList: kasutab topelt lingitud listi, kus igal elemendil on olemas viited eelmisele ja järgnevale elemendile (elementide manipuleerimine on kiirem, kuna puudub vajadus elemente mälus nihutada. On parem hoidmaks andmeid, mida tuleb tihti muuta)
+
+
+Failide lugemine ja kirjutamine
+
+Javas saab lugeda sisendandmeid failidest ja kirjutada andmeid failidesse
+
+Lugemine: 
+Reader - abstraktne klass, tähemärkide voo lugemiseks
+InputStreamReader - teisendab sisendbaidid tähemärkideks (kasutatav konsoolilt sisestatud andmete lugemiseks)
+FileReader - klass, tekstifailide lugemiseks lähtuvalt operatsioonisüsteemi vaikekodeeringust
+BufferedReader - loeb teksti tähemärkide voost, kasutades sealjuures puhvreid (et ei peaks samu tähemärke korduvalt lugema). Võimaldab kasutada readLine() meetodit ühe rea lugemiseks. Puhvrisuurust saab määrata, muidu on vaikesuurus. 
+
+Kirjutamine:
+Writer - abstraktne klass tähemärkide voo kirjutamiseks
+OutputStreamWriter - baidivoo teisendamiseks tähemärkidesse (konsoolil teksti kuvamiseks)
+FileWriter - klass, tekstifailide kirjutamiseks lähtuvalt operatsioonisüsteemi vaikekodeeringust
+BufferedWriter - kirjutab teksti tähemärkide voost, kasutades sealjuures puhvreid (et ei peaks samu tähemärke korduvalt kirjutama). Võimaldab kasutada newLine() meetodit ühe rea kirjutamiseks. Puhvrisuurust saab määrata, muidu on vaikesuurus.
+
+Kodeeringut saab määrata
+
+InputStreamReader reader = new InputStreamReader(new FileInputStream("MyFile.txt"), "UTF-16");
+
+FileWriter writer = new FileWriter("MyFile.txt", true);
+boolean määrab, kas kirjutatakse olemasolevasse faili juurde
+
+
+Veaolukorrad ja nende haldamine
+
+Exception: tähistab mittesoovitud sündmust, mida rakendus proovib püüda ja käsitleda. 
+Veatüübid: vale sisend, seadmerike, internetiühenduse katkestus, füüsilised piirangud (mälu sai otsa), koodivead, kättesaamatu fail
+
+Error: tähistab kriitilist probleemi, mida rakendus ei proovi püüda, kuna neid ei ole võimalik programmeerija poolt kontrollida (mälu otsas, mälu lekkimine, teekida mitteühilduvus, lõpmatu viitamine)
+
+Püüdmine tähendab, et Exceptioni tekkimisel lähtutakse defineeritud käitumisjuhisest (näiteks kuvatakse veateade). See võib olla määratud vaikimisi või kasutaja poolt. käitumisjuhist sisaldab Exeption Handler koodiplokk, mida run-time süsteem proovib leida
+
+Throwable - vigade ülemklass, määrab, et vigu saab Throw-ida (throws)
+public static void main(String[] arg) throws IOException
+
+try ja catch - proovitakse teha midagi ja püüda tekkivaid vigu
+try {
+    programmijupp
+} catch (Exception) {
+    Exception Handleri määramine
+}
+
+
+Objektorienteerituse head ning tülikad küljed
+
+Head:
+Koodide ja klasside korduvkasutatavus, mis võimaldab suurematel meeskondadel paralleelselt programmeerida, samuti taaskasutamist erinevates rakendustes
+Kood on paremini hooldatav ja turvatav, sest koodibaas on keskendatud (klassid, alamklassid, päritavus, objektid, objektide isendid)
+Kood on paremini loetav
+
+Tülikad:
+Ei pruugi olla efektiivne, koormab palju CPU-d, pidev andmete duplikeerimine suurendab mälukasutust
+Võib toota palju ebavajalikku koodi, raisates mälu (scalable, bloated)
+
+
+Klassi kasutamine staatiliste funktsioonide kogumikuna (moodulina)
+
+Klass saab sisaldada staatilisi funktsioone, mis käivitatakse klassi väljakutsumisel. Tavaliselt on sellised klassid kas põhiklasside sees, või on nad päritavad (alamklassideks, liidesena).
+Kogumikuna saab grupeerida omavahel seotud funktsioone ja rakendada neid erinevates olukordades, kutsudes välja tervet klassi
+Näiteks teisendusmoodul, mida kasutatakse valuuta teisendamisel soovitud ühikuks
+
+
+Objektide massiivi loomine ja kasutamine
+
+Luuakse objektidest, mis konstrueeritakse omaloodud klassides, näiteks Õpilased
+Õpilane[] õpilased = new Õpilane[5];
+õpilased[0] = new Õpilane(1701289270, "Maali Maasikas");
+
+Kasutatakse omaloodud objektide talletamiseks, et nende kohta vastavalt vajadusele infot pärida, juhul, kui tekib palju sama tüüpi objekte
+
+
+Staatilised ja isendimuutujad ning meetodid
+
+Staatilised:
+Kuuluvad klassile, on muutmatud, käivitatakse klassi väljakutsumisel.
+
+Isendimuutujad:
+Genereeritakse klassi eksemplari loomisel, on muudetavad ja dünaamiliselt rakendatavad
